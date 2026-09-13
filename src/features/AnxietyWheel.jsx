@@ -1,18 +1,18 @@
 import React, { useState, useRef } from "react";
 
 const C = {
-  bg:      "#0D0B1A",
-  s1:      "rgba(255,255,255,0.04)",
-  s2:      "rgba(255,255,255,0.07)",
-  border:  "rgba(255,255,255,0.08)",
-  t1:      "#F0EDFF",
-  t2:      "rgba(240,237,255,0.65)",
-  t3:      "rgba(240,237,255,0.35)",
-  flame:   "#FF5045",
-  mint:    "#68D2A7",
-  pink:    "#FF4F9A",
-  purple:  "#8B6DFF",
-  sun:     "#FFD84D",
+  bg: "#0D0B1A",
+  s1: "rgba(255,255,255,0.04)",
+  s2: "rgba(255,255,255,0.07)",
+  border: "rgba(255,255,255,0.08)",
+  t1: "#F0EDFF",
+  t2: "rgba(240,237,255,0.65)",
+  t3: "rgba(240,237,255,0.35)",
+  flame: "#FF5045",
+  mint: "#68D2A7",
+  pink: "#FF4F9A",
+  purple: "#8B6DFF",
+  sun: "#FFD84D",
 };
 
 const OUTCOMES = [
@@ -47,9 +47,9 @@ function Card({ children, style, glow }) {
 
 function PanelHeading({ children, sub }) {
   return (
-    <div style={{ marginBottom:20 }}>
-      <h2 style={{ fontSize:22, fontWeight:800, color:C.t1, margin:0 }}>{children}</h2>
-      {sub && <p style={{ fontSize:13, color:C.t2, marginTop:4 }}>{sub}</p>}
+    <div style={{ marginBottom: 20 }}>
+      <h2 style={{ fontSize: 22, fontWeight: 800, color: C.t1, margin: 0 }}>{children}</h2>
+      {sub && <p style={{ fontSize: 13, color: C.t2, marginTop: 4 }}>{sub}</p>}
     </div>
   );
 }
@@ -58,7 +58,7 @@ export default function AnxietyWheel({ onScore }) {
   const [spinning, setSpinning] = useState(false);
   const [rotation, setRotation] = useState(0);
   const [result, setResult] = useState(null);
-  
+
   const segments = OUTCOMES.length;
   const anglePerSegment = 360 / segments;
 
@@ -70,7 +70,7 @@ export default function AnxietyWheel({ onScore }) {
     // Random number of full spins + a random stop segment
     const spins = 5 + Math.floor(Math.random() * 5);
     const stopSegment = Math.floor(Math.random() * segments);
-    
+
     // The exact angle to stop on (center of the segment)
     // The pointer is at the top (0 degrees).
     const extraAngle = (segments - stopSegment) * anglePerSegment - (anglePerSegment / 2);
@@ -123,7 +123,7 @@ export default function AnxietyWheel({ onScore }) {
             const angle = i * anglePerSegment;
             const skewAngle = 90 - anglePerSegment;
             // A pure CSS pie slice approach using conic-gradient is cleaner
-            return null; 
+            return null;
           })}
 
           {/* Simple conic gradient for the wheel */}
@@ -157,7 +157,7 @@ export default function AnxietyWheel({ onScore }) {
               </div>
             );
           })}
-          
+
           <div style={{
             position: "absolute",
             top: "50%",
